@@ -21,6 +21,10 @@ Docker image for Strapi development
 ----------------------------------------
 
 
+## Deprecated
+
+Please use [official Strapi Docker Image](https://github.com/strapi/strapi-docker)
+
 # Usage
 
 ```
