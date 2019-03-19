@@ -6,7 +6,7 @@ Docker image for Strapi development
 
 ----------------------------------------
 
-**Ionic CLI :** 4.11.0
+**Strapi :** 3.0.0-alpha.24.1
 
 **Node.js :** v10.15.3
 
@@ -21,17 +21,11 @@ Docker image for Strapi development
 ----------------------------------------
 
 
-## Deprecated
-
-Please use [official Strapi Docker Image](https://github.com/strapi/strapi-docker)
-
 # Usage
 
 ```
-docker run -it --name STRAPI -v /c/Users/LG/Work:/app -p 1337:1337 gilhardl/strapi sh
+docker run -it --name STRAPI -v /path/to/your/project:/usr/src/api -p 1337:1337 gilhardl/strapi
 ```
-
-Then you should be able to use Strapi CLI from your container shell
 
 ### Serving your app
 
