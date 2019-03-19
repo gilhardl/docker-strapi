@@ -1,7 +1,7 @@
 ARG NODE_VERSION=10.15
-ARG STRAPI_VERSION=3.0.0-alpha.25
-
 FROM gilhardl/node:$NODE_VERSION
+
+ARG STRAPI_VERSION=3.0.0-alpha.25
 
 LABEL author="Lucas GILHARD <l.gilhard@gmail.com>"
 LABEL version="3.0.0-alpha.25"
