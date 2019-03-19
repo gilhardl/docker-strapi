@@ -1,10 +1,10 @@
 ARG NODE_VERSION=10.15
-ARG STRAPI_VERSION=3.0.0-alpha.24.1
+ARG STRAPI_VERSION=3.0.0-alpha.25
 
 FROM gilhardl/node:$NODE_VERSION
 
 LABEL author="Lucas GILHARD <l.gilhard@gmail.com>"
-LABEL version="3.0.0-alpha.24.1"
+LABEL version="3.0.0-alpha.25"
 LABEL description="Docker image for Strapi development"
 
 WORKDIR /usr/src/api/
