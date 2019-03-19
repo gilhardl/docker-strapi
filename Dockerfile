@@ -1,24 +1,19 @@
 ARG NODE_VERSION=10.15
-FROM node:$NODE_VERSION-alpine
+ARG STRAPI_VERSION=3.0.0-alpha.24.1
+
+FROM gilhardl/node:$NODE_VERSION
 
 LABEL author="Lucas GILHARD <l.gilhard@gmail.com>"
-LABEL version="1.0.0"
+LABEL version="3.0.0-alpha.24.1"
 LABEL description="Docker image for Strapi development"
 
-ARG APP_DIR="/app"
+WORKDIR /usr/src/api/
 
-# Linux setup
-RUN apk update \
-  && rm -rf /tmp/* /var/cache/apk/* ~/.npm \
-  && npm cache verify \
-  && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
-
-# Yarn
-RUN apk add yarn
+USER root
 
 # Strapi
-RUN yarn global add strapi@3.0.0-alpha.24.1
+RUN yarn global add strapi@$STRAPI_VERSION
 
 EXPOSE 1337
 
-WORKDIR $APP_DIR
+CMD ["bash"]
