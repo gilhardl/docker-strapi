@@ -6,7 +6,7 @@ Docker image for Strapi development
 
 ----------------------------------------
 
-**Strapi :** 3.0.0-alpha.25
+**Strapi :** 3.0.0-alpha.25.1
 
 **Node.js :** v10.15.3
 
