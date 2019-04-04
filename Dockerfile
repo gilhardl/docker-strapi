@@ -12,7 +12,7 @@ WORKDIR /usr/src/api/
 USER root
 
 # Strapi
-RUN yarn global add strapi@$STRAPI_VERSION
+RUN npm install -g strapi@$STRAPI_VERSION
 
 EXPOSE 1337
 
