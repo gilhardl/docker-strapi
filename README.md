@@ -43,20 +43,21 @@ Note:
 docker volume create mongodb-data
 ```
 
-1. Run MongoDB container for your database
+2. Run MongoDB container for your database
 
 ```
 docker run -it --name yourapp-db -p 27017:27017 -v mongodb-data:/data/db -e MONGO_INITDB_DATABASE=yourapp mongo
 ```
 
-1. Run Strapi container to use Strapi CLI
+3. Run Strapi container to use Strapi CLI
 
 ```
 docker run -it --name strapi-cli -v /path/to/your/project:/usr/src/api -p 1337:1337 --link yourapp-db:mongo gilhardl/strapi
 ```
 
-1. Use Strapi CLI
-   Create a project :
+4. Use Strapi CLI
+
+Create a project :
 
 ```
 strapi new yourapp-api
@@ -80,7 +81,7 @@ strapi start
 
 ## With docker-compose
 
-`docker-compose.yml` example
+Create a file named `docker-compose.yml` at your project root like the following :
 
 ```
 version: '3'
@@ -112,6 +113,12 @@ services:
 
 volumes:
   mongodb-data:
+```
+
+Start database and API :
+
+```
+docker-compose up
 ```
 
 # Licence
