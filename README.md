@@ -1,22 +1,20 @@
 # docker-strapi
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/gilhardl/strapi.svg?style=flat-square)](https://hub.docker.com/r/gilhardl/strapi/)
-
 Docker image for Strapi development, based on [gilhardl/node](https://github.com/gilhardl/docker-node)
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/gilhardl/strapi.svg?style=flat-square&label=PULLS)](https://hub.docker.com/r/gilhardl/strapi/)
 
 ---
 
-**Strapi :** 3.0.0-alpha.25.2
+![OS](https://img.shields.io/static/v1.svg?style=flat-square&label=OS&message=Linux%20Alpine)
 
-**Node.js :** v10.15.3
+![STRAPI](https://img.shields.io/npm/v/strapi/alpha.svg?style=flat-square&label=STRAPI&color=blue)
 
-**NPM :** v6.4.1
+![NODE](https://img.shields.io/npm/v/node/lts.svg?style=flat-square&label=NODE)
+![NPM](https://img.shields.io/npm/v/npm/lts.svg?style=flat-square&label=NPM)
+![YARN](https://img.shields.io/npm/v/yarn/latest.svg?style=flat-square&label=YARN)
 
-**Yarn :** 1.13.0
-
-**OS :** Linux alpine x64
-
-**Package manager:** yarn
+![PACKAGE MANAGER](https://img.shields.io/static/v1.svg?style=flat-square&label=PACKAGE%20MANAGER&message=Yarn)
 
 ---
 
@@ -25,42 +23,43 @@ Docker image for Strapi development, based on [gilhardl/node](https://github.com
 ## With docker
 
 ### Basic usage
-
+Start CLI :
 ```
-docker run -it --name strapi-cli -v /path/to/your/project:/usr/src/api gilhardl/strapi
+docker run -it --name strapi -v /path/to/your/project:/usr/src/api gilhardl/strapi
+```
+Start CLI and expose port to be able to start the app :
+```
+docker run -it --name strapi -v /path/to/your/project:/usr/src/api gilhardl/strapi -p 1337:1337 --link yourapp-db:mongo
 ```
 
-Note:
+Note :
 
 - `yourapp-db` is the name of your MongoDB container
-- If you don't want to start the app, you don't necessary need specify a `-p 1337:1337` or `--link yourapp-db:mongo` parameters.
+- If you don't want to start the app, you don't need to specify `-p 1337:1337` or `--link yourapp-db:mongo` parameters.
 
 ### Walkthrough
 
 1. Create a volume for MongoDB data (if not exist)
-
 ```
 docker volume create mongodb-data
 ```
 
 2. Run MongoDB container for your database
-
 ```
 docker run -it --name yourapp-db -p 27017:27017 -v mongodb-data:/data/db -e MONGO_INITDB_DATABASE=yourapp mongo
 ```
 
 3. Run Strapi container to use Strapi CLI
-
 ```
-docker run -it --name strapi-cli -v /path/to/your/project:/usr/src/api -p 1337:1337 --link yourapp-db:mongo gilhardl/strapi
+docker run -it --name strapi -v /path/to/your/project:/usr/src/api -p 1337:1337 --link yourapp-db:mongo gilhardl/strapi
 ```
 
 4. Use Strapi CLI
 
 Create a project :
-
 ```
 strapi new yourapp-api
+
 ? Choose your installation type Custom (manual settings)
 ? Choose your main database: MongoDB
 ? Database name: yourapp
@@ -71,10 +70,11 @@ strapi new yourapp-api
 ? Password:
 ? Authentication database (Maybe "admin" or blank):
 ? Enable SSL connection: false
+
+...
 ```
 
 Start API :
-
 ```
 strapi start
 ```
@@ -82,7 +82,6 @@ strapi start
 ## With docker-compose
 
 Create a file named `docker-compose.yml` at your project root like the following :
-
 ```
 version: '3'
 
@@ -116,7 +115,6 @@ volumes:
 ```
 
 Start database and API :
-
 ```
 docker-compose up
 ```
