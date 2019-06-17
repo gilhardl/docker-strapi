@@ -8,7 +8,7 @@ WORKDIR /usr/src/api/
 USER root
 
 # STRAPI
-RUN npm install -g strapi@alpha
+RUN npm install -g strapi@next
 
 # EXPOSE PORTS
 EXPOSE 1337
