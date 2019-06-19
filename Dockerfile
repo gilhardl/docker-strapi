@@ -7,8 +7,10 @@ WORKDIR /usr/src/api/
 
 USER root
 
+RUN apk add --no-cache build-base gcc autoconf automake libtool zlib-dev libpng-dev nasm
+
 # STRAPI
-RUN npm install -g strapi@next
+RUN npm install -g strapi@beta
 
 # EXPOSE PORTS
 EXPOSE 1337
