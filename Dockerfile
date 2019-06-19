@@ -7,7 +7,11 @@ WORKDIR /usr/src/api/
 
 USER root
 
-RUN apk add --no-cache build-base gcc autoconf automake libtool zlib-dev libpng-dev nasm
+RUN apt-get install -y build-base gcc autoconf automake libtool zlib-dev libpng-dev nasm
+RUN apt-get autoremove -y \
+  && apt-get clean -y \
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /tmp/* /var/cache/apt/*
 
 # STRAPI
 RUN npm install -g strapi@beta
